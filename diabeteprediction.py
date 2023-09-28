@@ -43,3 +43,13 @@ for k in range(1,18):
     knn_new.fit(x_train, y_train)
     print(counter, " ", "Accuracy rate: % ", knn_new.score(x_test, y_test)*100)
     counter += 1
+
+# For a new patient forecast:
+from sklearn.preprocessing import MinMaxScaler
+ 
+# We are doing normalization - we used MinMax scaler to normalize faster...
+sc = MinMaxScaler()
+sc.fit_transform(x_raw_data)
+ 
+new_prediction = knn.predict(sc.transform(np.array([[6,148,72,35,0,33.6,0.627,50]])))
+new_prediction[0]
